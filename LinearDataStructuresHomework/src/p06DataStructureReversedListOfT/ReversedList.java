@@ -60,6 +60,7 @@ public class ReversedList<T> implements Iterable<T>, Iterator<T>{
 	
 	@Override
 	public Iterator<T> iterator() {
+		current = 0;
 		return this;
 	}
 
