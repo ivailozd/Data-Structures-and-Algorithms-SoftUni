@@ -19,8 +19,8 @@ public class ArrayBasedStackTests {
 		stack.push(33);
 		assertEquals(1, stack.count());
 		
-		int poped = stack.pop();
-		assertEquals(33, poped);
+		int popped = stack.pop();
+		assertEquals(33, popped);
 		assertEquals(0, stack.count());
 	}
 	
@@ -34,10 +34,10 @@ public class ArrayBasedStackTests {
 			assertEquals(i, stack.count());
 		}
 		
-		String poped = "";
+		String popped = "";
 		for (int i = 1000; i >= 1; i--) {
-			poped = stack.pop();
-			assertEquals(i, Integer.parseInt(poped));
+			popped = stack.pop();
+			assertEquals(i, Integer.parseInt(popped));
 			assertEquals(i - 1, stack.count());
 		}
 	}
@@ -59,12 +59,12 @@ public class ArrayBasedStackTests {
 		stack.push(55);
 		assertEquals(2, stack.count());
 		
-		int poped = stack.pop();
-		assertEquals(55, poped);
+		int popped = stack.pop();
+		assertEquals(55, popped);
 		assertEquals(1, stack.count());
 		
-		poped = stack.pop();
-		assertEquals(33, poped);
+		popped = stack.pop();
+		assertEquals(33, popped);
 		assertEquals(0, stack.count());
 	}
 	
