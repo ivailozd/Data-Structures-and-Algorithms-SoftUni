@@ -15,7 +15,7 @@ public class CircularList<T> {
 	/**
 	 * Adds new item on the right of the current and
 	 * moves current to the new item.
-	 * @param item - the item to be added
+	 * @param item - the item to be added.
 	 */
 	public void add(T item) {
 		Link<T> newLink = new Link<T>(item);
@@ -34,11 +34,19 @@ public class CircularList<T> {
 		count++;
 	}
 
+	/**
+	 * Returns current item.
+	 * @return current item.
+	 */
 	@SuppressWarnings("unchecked")
 	public T getCurrent() {
 		return (T) current.data;
 	}
 	
+	/**
+	 * Removes current item and moves current pointer to right.
+	 * @return removed item.
+	 */
 	@SuppressWarnings("unchecked")
 	public T removeCurrent() {
 		Link<?> temp;
@@ -57,8 +65,26 @@ public class CircularList<T> {
 		return (T) temp.data;
 	}
 
+	/**
+	 * Returns items's count.
+	 * @return items's count.
+	 */
 	public int count() {
 		return count;
+	}
+
+	/**
+	 * Moves current pointer to right.
+	 */
+	public void stepRight() {
+		current = current.right;
+	}
+	
+	/**
+	 * Moves current pointer to left.
+	 */
+	public void stepLeft() {
+		current = current.left;
 	}
 	
 	@Override
@@ -74,11 +100,4 @@ public class CircularList<T> {
 		return result.trim() + "]";
 	}
 
-	public void stepRight() {
-		current = current.right;
-	}
-	
-	public void stepLeft() {
-		current = current.left;
-	}
 }
