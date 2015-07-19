@@ -1,8 +1,9 @@
-package problem03ImplementArrayBasedStack;
+package implementArrayBasedStack;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
+@SuppressWarnings("unchecked")
 public class ArrayBasedStack<T> {
 	
 	private static final int INITIAL_CAPACITY = 16;
@@ -12,7 +13,6 @@ public class ArrayBasedStack<T> {
 	/**
 	 * Constructor for stack with default capacity.
 	 */
-	@SuppressWarnings("unchecked")
 	public ArrayBasedStack() {
 		elements = (T[]) new Object[INITIAL_CAPACITY];
 		size = 0;
@@ -22,7 +22,7 @@ public class ArrayBasedStack<T> {
 	 * Constructor for stack with custom capacity.
 	 * @param capacity - the stack's capacity.
 	 */
-	@SuppressWarnings("unchecked")
+	
 	public ArrayBasedStack(int capacity) {
 		elements = (T[]) new Object[capacity];
 		size = 0;
@@ -52,19 +52,18 @@ public class ArrayBasedStack<T> {
 	 * Pops an element from the stack.
 	 * @return the popped element.
 	 */
-	@SuppressWarnings({ "hiding", "unchecked" })
-	public <T> T pop() {
+	public T pop() {
 		if (size == 0) {
 			throw new EmptyStackException();
 		}
-		return (T) elements[--size];
+		return elements[--size];
 	}
 	
 	/**
 	 * Returns on array of stack's elements. 
 	 * @return array of stack's elements.
 	 */
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({ "hiding" })
 	public <T> T[] toArray() {
 		T[] result = (T[]) new Object[size];
 		for (int i = 0; i < size; i++) {

@@ -1,4 +1,4 @@
-package problem04ArrayBasedStackUnitTests;
+package implementArrayBasedStack;
 
 import static org.junit.Assert.*;
 
@@ -6,8 +6,6 @@ import java.sql.Date;
 import java.util.EmptyStackException;
 
 import org.junit.Test;
-
-import problem03ImplementArrayBasedStack.ArrayBasedStack;
 
 public class ArrayBasedStackTests {
 

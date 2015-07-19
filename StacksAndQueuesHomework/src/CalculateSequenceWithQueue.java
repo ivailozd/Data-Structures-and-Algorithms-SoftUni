@@ -1,4 +1,4 @@
-package problem02CalculateSequenceWithQueue;
+
 
 import java.util.LinkedList;
 import java.util.Queue;
