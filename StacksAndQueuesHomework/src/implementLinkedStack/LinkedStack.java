@@ -38,8 +38,8 @@ public class LinkedStack<T> {
     }
     
 	/**
-	 * Removes the first element from the stack.
-	 * @return the removed element.
+	 * Removes and returns the last added element from the stack.
+	 * @return the last element.
 	 */
     public T pop() {
     	if (size == 0) {
