@@ -32,11 +32,18 @@ public class Tree<T> {
 	}
 	
 	/**
+	 * Simply call private(int depth = 0).
+	 */
+	public void print() {
+		print(0);
+	}
+	
+	/**
 	 * Prints each tree node on new line with offset
 	 * according the depth.
 	 * @param depth - tree's depth.
 	 */
-	public void print(int depth) {
+	private void print(int depth) {
 		String offset = "  ";
 		for (int i = 0; i < depth; i++) {
 			offset += "  ";

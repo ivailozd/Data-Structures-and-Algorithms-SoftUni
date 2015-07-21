@@ -18,7 +18,7 @@ public class PlayWithTree {
 						new Tree<Integer>(23),
 						new Tree<Integer>(6)));
 		
-		tree.print(0);
+		tree.print();
 		
 		List<Integer> nodes = new LinkedList<Integer>();
 		tree.each(i -> nodes.add(i));
