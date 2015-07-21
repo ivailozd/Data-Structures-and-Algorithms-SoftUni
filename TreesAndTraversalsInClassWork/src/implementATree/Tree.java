@@ -69,7 +69,7 @@ public class Tree<T> {
 		return value;
 	}
 
-	private void setValue(T value) {
+	public void setValue(T value) {
 		this.value = value;
 	}
 
