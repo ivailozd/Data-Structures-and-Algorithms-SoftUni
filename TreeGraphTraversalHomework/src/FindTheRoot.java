@@ -14,19 +14,7 @@ public class FindTheRoot {
 	
 	public static void main(String[] args) {
 		
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Number of edges: ");
-		int edges = scanner.nextInt();
-		Integer parent, child;
-		for (int i = 0; i < edges; i++) {
-			System.out.print("Edge: ");
-			parent = scanner.nextInt();
-			child = scanner.nextInt();
-			addToGraph(parent, child);
-			
-		}
-		
-		scanner.close();
+		parseInput();
 		
 		List<Integer> roots = findRoot();
 		if (roots.isEmpty()) {
@@ -82,6 +70,25 @@ public class FindTheRoot {
 			LinkedList<Integer> newNode = new LinkedList<>();
 			graph.add(newNode);
 		}
+	}
+	
+	/**
+	 * Parses the user input and creates the graph.
+	 */
+	private static void parseInput() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Number of edges: ");
+		int edges = scanner.nextInt();
+		Integer parent, child;
+		for (int i = 0; i < edges; i++) {
+			System.out.print("Edge: ");
+			parent = scanner.nextInt();
+			child = scanner.nextInt();
+			addToGraph(parent, child);
+			
+		}
+		
+		scanner.close();
 		
 	}
 
