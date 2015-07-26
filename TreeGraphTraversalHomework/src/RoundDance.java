@@ -10,22 +10,8 @@ public class RoundDance {
 	private static Map<Integer, List<Integer>> graph = new HashMap<>();
 	
 	public static void main(String[] args) {
-		
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Number of friendships: ");
-		int edges = scanner.nextInt();
-		System.out.print("Dance leader: ");
-		int startNode = scanner.nextInt();
-		Integer parent, child;
-		for (int i = 0; i < edges; i++) {
-			System.out.print("Friendship: ");
-			parent = scanner.nextInt();
-			child = scanner.nextInt();
-			addToGraph(parent, child);
-		}
-		
-		scanner.close();
 
+		int startNode = parseInput();
 		List<Integer> longestRoundDance = findLongestPath(startNode);
 		System.out.println("The round dance with the most people, starting from " + 
 				startNode + " and everyone are friends is:");
@@ -34,7 +20,7 @@ public class RoundDance {
 		}
 
 	}
-	
+
 	/**
 	 * Finds longest path in the graph from given node.
 	 * @param startNode - starting node.
@@ -74,6 +60,29 @@ public class RoundDance {
 			graph.put(parentElement, newNode);
 		}
 		
+	}
+	
+	/**
+	 * Parses the user input and creates the graph.
+	 * @return - the starting node.
+	 */
+	private static int parseInput() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Number of friendships: ");
+		int edges = scanner.nextInt();
+		System.out.print("Dance leader: ");
+		int startNode = scanner.nextInt();
+		Integer parent, child;
+		for (int i = 0; i < edges; i++) {
+			System.out.print("Friendship: ");
+			parent = scanner.nextInt();
+			child = scanner.nextInt();
+			addToGraph(parent, child);
+		}
+		
+		scanner.close();
+		
+		return startNode;
 	}
 
 }
