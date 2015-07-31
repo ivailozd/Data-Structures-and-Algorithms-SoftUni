@@ -7,7 +7,7 @@ public class FindTheRoot {
 
 	/*
 	 *Graph implementation. 
-	 *It would be easy with Map<Integer, List<Integer>>, but this is a way too.
+	 *It would be easier with Map<Integer, List<Integer>>, but this is a way too.
 	 */
 	private static List<LinkedList<Integer>> graph = new LinkedList<LinkedList<Integer>>();
 	private static List<Integer> graphMap = new LinkedList<>();
