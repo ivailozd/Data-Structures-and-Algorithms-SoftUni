@@ -13,10 +13,19 @@ public class OrderedSet<T extends Comparable<T>> implements Iterable<T>{
 		count = 0;
 	}
 	
+	/**
+	 * Returns actual number of elements
+	 * @return elements' count
+	 */
 	public int count() {
 		return count;
 	}
 	
+	/**
+	 * Adds element if not presents, else leaves table untouched.
+	 * @param value - the element to be added
+	 * @return true if added, false if already presents
+	 */
 	public boolean add(T value) {
 		Node<T> newNode = new Node<T>(value);
 		if (root == null) {
@@ -50,6 +59,11 @@ public class OrderedSet<T extends Comparable<T>> implements Iterable<T>{
 		return true;
 	}
 	
+	/**
+	 * Checks if given element presents
+	 * @param value - searched element
+	 * @return true if presents, else if not
+	 */
 	public boolean contains(T value) {
 		Node<T> current = root;
 		while (! current.getValue().equals(value)) {
@@ -67,6 +81,12 @@ public class OrderedSet<T extends Comparable<T>> implements Iterable<T>{
 		return true;
 	}
 	
+	/**
+	 * Removes given element if presents. If the element has children finds
+	 * appropriate its successor to take its place
+	 * @param value - element to be removed
+	 * @return true - if removed, false - if does not present
+	 */
 	public boolean remove(T value) {
 		Node<T> current = root;
 		Node<T> parent = root;
@@ -128,6 +148,11 @@ public class OrderedSet<T extends Comparable<T>> implements Iterable<T>{
 		return true;
 	}
 
+	/**
+	 * Helper method for finding appropriate successor for removing element
+	 * @param delNode - removing element
+	 * @return successor
+	 */
 	private Node<T> findSuccessor(Node<T> delNode) {
 		
 		Node<T> successorParent = delNode;
@@ -148,11 +173,17 @@ public class OrderedSet<T extends Comparable<T>> implements Iterable<T>{
 		return successor;
 	}
 
+	/**
+	 * Returns custom iterator.
+	 */
 	@Override
 	public Iterator<T> iterator() {
 		return new OrderedSetIterator();
 	}
 	
+	/**
+	 * Custom iterator implementation.
+	 */
 	private class OrderedSetIterator implements Iterator<T>{
 		
 		private Stack<Node<T>> stack = new Stack<>();
