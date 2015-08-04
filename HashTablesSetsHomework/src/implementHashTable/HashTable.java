@@ -3,6 +3,9 @@ package implementHashTable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Stack;
+
 import javax.management.openmbean.InvalidKeyException;
 
 @SuppressWarnings("unchecked")
@@ -230,44 +233,31 @@ public class HashTable<TKey, TValue> implements Iterable<KeyValue<TKey, TValue>>
 	 */
 	private class HashTableIterator implements Iterator<KeyValue<TKey, TValue>>{
 		
-		private List<? super KeyValue<TKey, TValue>> currentSlot = null;
-		private KeyValue<TKey, TValue> currentPair= null;
-		private int currentIndex = 0;
-		private int currentSlotIndex;
-		private int currentPairIndex;
+		private Stack<KeyValue<TKey, TValue>> stack = new Stack<>();
 		
 		public HashTableIterator() {
-			currentSlot = slots[0];
-			currentSlotIndex = 0;
+			for (List<? super KeyValue<TKey, TValue>> slot : slots) {
+				if (slot != null) {
+					for (Object object : slot) {
+						stack.push((KeyValue<TKey, TValue>)object);
+					}
+				}
+			}
 		}
 
 		@Override
 		public boolean hasNext() {
-			return currentIndex < count;
+			return !stack.isEmpty();
 		}
 
 		@Override
 		public KeyValue<TKey, TValue> next() {
-			
-			if (currentSlot == null || currentPairIndex == currentSlot.size()) {
-				currentSlotIndex++;
-				currentSlot = slots[currentSlotIndex];
-				while (currentSlot == null) {
-					currentSlotIndex++;
-					currentSlot = slots[currentSlotIndex];
-				}
-				
-				currentPairIndex = 0;
-				currentPair = (KeyValue<TKey, TValue>) currentSlot.get(currentPairIndex);
-				currentPairIndex++;
-				
-			} else if (currentPairIndex < currentSlot.size()) {
-				currentPair = (KeyValue<TKey, TValue>) currentSlot.get(currentPairIndex);
-				currentPairIndex++;
+			if (!hasNext()) {
+				throw new NoSuchElementException();
 			}
 			
-			currentIndex++;
-			return currentPair;
+			KeyValue<TKey, TValue> current = stack.pop();
+			return current;
 		}
 	}
 	
